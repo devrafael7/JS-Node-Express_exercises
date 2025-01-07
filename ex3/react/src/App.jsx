@@ -5,17 +5,26 @@ import FormButton from './elements/form_button';
 import SocialMediaIcon from './elements/sm_icons';
 
 function App() {
+  const [isSignUp, setIsSignUp] = useState(true);
+
+  const showSignIn = ()=> setIsSignUp(false);
+  const showSignUp = ()=> setIsSignUp(true);
+
+  document.querySelectorAll('.inputName').forEach( (inputNames) =>{
+    nameValue = inputNames.value
+  })
+
   return (
     <div className="w-full h-screen bg-gray-200">
-      <form className="hidden w-full h-screen flex flex-col px-10 pt-10 relative" action="">
+      <form className={`w-full h-screen flex flex-col px-10 pt-10 relative ${isSignUp ? '': 'hidden'}`} action="">
         <h1 className="text-4xl font-normal">Hi!</h1>
         <p className="text-gray-800 mb-9">Create a new account</p>
 
-        <FormInput placeholder="Enter your name"/>
-        <FormInput placeholder="Enter your e-mail"/>
-        <FormInput placeholder="Enter your password"/>
+        <FormInput className='inputName' placeholder="Enter your name"/>
+        <FormInput className='inputEmail' placeholder="Enter your e-mail"/>
+        <FormInput className="inputPassword" placeholder="Enter your password"/>
 
-        <FormButton className='hover:bg-blue-800 mb-12 mt-4'>Submit</FormButton>
+        <FormButton className='hover:bg-blue-800 mb-12 mt-4' type="submit">Submit</FormButton>
 
         <div className='w-full flex items-center h-auto mb-7'>
           <hr className='border-t-1 border-black w-full'/>
@@ -35,17 +44,17 @@ function App() {
 
         </div>
 
-        <p className='absolute bottom-3 text-sm'>Already have an accout? <span className='font-semibold'>Sign in</span></p>
+        <p className='absolute bottom-3 text-sm' onClick={showSignIn}>Already have an accout? <span className='font-semibold'>Sign in</span></p>
       </form>
 
 
 
-      <form className=" w-full h-screen flex flex-col px-10 pt-10 relative" action="">
+      <form className={`signInForm w-full h-screen flex flex-col px-10 pt-10 relative ${isSignUp ? 'hidden': ''}`} action="">
         <h1 className="text-4xl font-normal">Welcome!</h1>
         <p className="text-gray-800 mb-9">Sign in to continue</p>
 
-        <FormInput placeholder="Enter your e-mail"/>
-        <FormInput placeholder="Enter your password"/>
+        <FormInput className="inputEmail" placeholder="Enter your e-mail"/>
+        <FormInput className="inputPassword" placeholder="Enter your password"/>
 
         <FormButton className='hover:bg-blue-800 mb-3 mt-4'>Login</FormButton>
         <p className='font-semibold self-center mb-12 text-gray-700'>Forgot Password?</p>
@@ -68,10 +77,11 @@ function App() {
 
         </div>
 
-        <p className='absolute bottom-3 text-sm'>Don't have an account?<span className='font-semibold'> Sign up</span></p>
+        <p className='absolute bottom-3 text-sm' onClick={showSignUp}>Don't have an account?<span className='font-semibold'> Sign up</span></p>
       </form>
     </div>
   )
+
 }
 
 export default App
