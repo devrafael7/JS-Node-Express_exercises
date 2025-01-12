@@ -7,6 +7,13 @@ const { Strategy: GoogleStrategy } = require('passport-google-oauth20');
 const expressSession = require('express-session');
 const passport = require('passport');
 
+function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login'); 
+}
+
 const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -98,12 +105,12 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/manual_login', (req, res) => {
@@ -124,7 +131,13 @@ app.post('/manual_login', (req, res) => {
 
             if (results.length > 0) {
                 console.log('Logged in successfully:', results[0]);
-                res.redirect('/');
+                req.login(results[0], (err) => {
+                    if (err) {
+                        console.log('Error to login: ', err);
+                        return res.redirect('/login');
+                    }
+                    res.redirect('/');
+                });
             } else {
                 console.log('User or password wrong.');
                 res.redirect('/login');
@@ -160,7 +173,7 @@ app.post('/manual_login', (req, res) => {
 });
 
 app.listen(5001, () => {
-    console.log('Server running at http://localhost:5001');
+    console.log('Server running at http://localhost:5001/login');
 });
 
 
