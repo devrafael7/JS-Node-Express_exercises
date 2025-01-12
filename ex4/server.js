@@ -1,41 +1,30 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql2');
-require('dotenv').config();
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5001;
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
+})
+
+app.get('/login', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+})
+
+app.post('/manual_login', function(req, res){
+    res.send("Name: "+req.body.user_name +"Password: "+req.body.user_password);
+})
+
+app.listen(5001, () => {
+    console.log('Server running at http://localhost:5001');
 });
 
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
-
-  connection.connect( (err) => {
-    if (err) {
-        console.error('Error to connect to MySQL:', err.message);
-        return;
-    }
-
-    console.log('Successful connection to MySQL!');
-});
-});
-
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
 
 
 
