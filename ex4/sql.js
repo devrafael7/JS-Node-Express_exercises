@@ -26,3 +26,5 @@ connection.query('SELECT * FROM rea_users', (err, results) => {
     console.log('Results: ', results)
 })
 */
+
+module.exports = connection;
