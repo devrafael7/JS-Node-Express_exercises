@@ -21,7 +21,6 @@ app.get('/login', (req, res)=> {
 })
 
 app.post('/manual_login', function(req, res){
-    res.send("Name: "+req.body.user_name +"Password: "+req.body.user_password + "Email: "+req.body.user_email);
 
     connection.connect((err) => {
         if (err) {
@@ -45,6 +44,8 @@ app.post('/manual_login', function(req, res){
             return;
         }
         console.log('Data entered successfully: ', result.insertId);
+
+        res.redirect('/')
     })
 
     connection.end();
