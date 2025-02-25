@@ -246,3 +246,5 @@ function discountCalc(){
 }
 
 //discountCalc();
+
+
