@@ -216,7 +216,7 @@ function deltaCalc(a, b, c){
     console.log(result);
 }
 
-//deltaCalc(2, 3, -2)
+//deltaCalc(2, 3, -2)-
 
 function periOfACircle(radium){
     const perimeter = 2 * Math.PI * parseFloat(radium);
@@ -248,3 +248,23 @@ function discountCalc(){
 //discountCalc();
 
 
+/*
+function perfectSquare(n){
+    let max = 5000;
+    let ps = false
+    for (let i = 0; i <= max; i++){
+        if (i * i === n){
+            console.log(`${n} is a perfect square`);
+            ps = true;
+            break;
+        };
+
+        if (i === max && i != true){
+            console.log(`${n} is not a perfect square`)
+        }
+    }
+
+}
+*/
+
+//perfectSquare(627)
