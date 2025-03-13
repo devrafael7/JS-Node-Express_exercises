@@ -268,3 +268,53 @@ function perfectSquare(n){
 */
 
 //perfectSquare(627)
+
+let numSeq = [12, 13, 14, 15, 14, 13, 12, 15, 16, 16, 14, 13, 13, 12, 13, 13, 14, 14, 13, 14, 12, 14, 15, 14, 12];
+
+let orgSeq = numSeq.sort();
+
+numSeq.forEach(num =>{
+    parseInt(num)
+})
+
+console.log(orgSeq)
+
+let count = orgSeq.reduce((acc, num) => {
+    acc[num] = (acc[num] || 0) + 1;
+    return acc;
+}, {});
+
+let fi = Object.values(count);
+
+let seqSize = orgSeq.length;
+console.log(seqSize)
+
+console.log(fi)
+
+let friArray = []
+let fri = 0
+fi.forEach(num =>{
+    fri = (((num / seqSize) * 100).toFixed(2))
+    fri = parseFloat(fri)
+    friArray.push(fri);
+})
+
+console.log(friArray)
+
+let friSum = friArray.reduce((acc, num) => num > 0 ? acc + num: acc, 0)
+
+console.log(friSum)
+
+let Fi = fi.reduce((acc, num) => num > 0 ? acc + num : acc, 0);
+
+console.log(Fi)
+
+
+
+
+
+
+
+
+
+
