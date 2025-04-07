@@ -1,3 +1,4 @@
+const { totalmem } = require('os');
 const readline = require('readline');
 const { isNull } = require('util');
 const rl = readline.createInterface({
@@ -356,3 +357,145 @@ function typeOfVariation(){
 }
 
 //typeOfVariation();
+
+
+function FindCV(){
+    const mainNumbers = [148, 170, 155, 131];
+
+    let numbersSum = 0;
+    for (i of mainNumbers){
+        numbersSum += i;
+    };
+    console.log(numbersSum);
+
+    const average = numbersSum / mainNumbers.length;
+    console.log(average);
+
+    let squareOfDeviation = 0;
+    for (i of mainNumbers){
+        squareOfDeviation += (i - average)**2;
+    };
+    console.log(squareOfDeviation);
+
+    const AverageOfsquareOfDeviation = squareOfDeviation / mainNumbers.length;
+    console.log(AverageOfsquareOfDeviation);
+
+    const standartDeviation = Math.sqrt(AverageOfsquareOfDeviation).toFixed(0);
+    console.log(standartDeviation);
+
+    const CV = ((standartDeviation / average) * 100).toFixed(0);
+    console.log(`${CV}% - Small variation`);
+}
+
+//FindCV();
+
+function CVWClass (){
+    const numbersClass = [1,2,3,4,5];
+    const numbersInteval = [70,80,90,100,110,120];
+    const fi = [8,14,12,16,10];
+
+    let midPoint = [];
+    for (i of numbersInteval){
+        if (i != 120){
+            midPoint.push((i + (i + 10))/2);
+        };
+    };
+
+    console.log(midPoint);
+
+    let soloAverage = [];
+    for (let i = 0; i < fi.length; i++){
+        soloAverage.push(fi[i] * midPoint[i]);
+    };
+    console.log(soloAverage);
+
+    let sumAverage = 0;
+    for (i of soloAverage){
+        sumAverage += i;
+    };
+    console.log(sumAverage);
+
+    let soloSumOfFi = [];
+
+    let sumOfFi = 0;
+    for (i of fi){
+        sumOfFi += i;
+        soloSumOfFi.push(sumOfFi);
+    };
+
+    console.log(soloSumOfFi);
+
+    const average = sumAverage / sumOfFi;
+    console.log(`${average}Km/h`);
+
+    function findMedian(){
+        const medianLocation = sumOfFi / 2;
+        let nearestNumber = soloSumOfFi[0];
+
+        for (let i = 1; i <= soloSumOfFi.length; i++){
+            if (Math.abs(soloSumOfFi[i] - medianLocation) < (Math.abs(nearestNumber - medianLocation))){
+                nearestNumber = soloSumOfFi[i];
+            };
+        };
+
+        return nearestNumber
+    };
+
+    findMedian();
+
+    console.log(findMedian());
+    
+    const medianClass = numbersInteval[2];
+    console.log(medianClass);
+
+    function FindMd(){
+        const Li = medianClass;
+        const n = sumOfFi;
+        const F = soloSumOfFi[1];
+        const f = fi[2];
+        const h = numbersInteval[3] - medianClass;
+    
+        const Md = (Li + ((((n / 2) - F) / f) * h)).toFixed(2);
+        return Md;
+    };
+    console.log(FindMd());
+
+    function FindMo(){
+        const higherFrequency = Math.max(...fi);
+        const Li = numbersInteval[3];
+        const hf = fi[3];
+        const previousHf = fi[2];
+        const posteriorHf = fi[4];
+        const h = numbersInteval[4] - numbersInteval[3];
+
+        const Mo = (Li + (((hf - previousHf) / (2 * hf -  previousHf - posteriorHf))*h));
+        
+        return `${Mo}Km/h`;
+    };
+    console.log(FindMo());
+
+    function FindS(){
+        let soloSumOfS = [];
+
+        let stepsToFindS = 0;
+        for(let i = 0; i <= fi.length; i++){
+            stepsToFindS += fi[i] * ((midPoint[i] - average)**2);
+            if (!isNaN(stepsToFindS)){
+                soloSumOfS.push(stepsToFindS);
+            }
+        };
+        const totalSumOfS = Math.max(...soloSumOfS);
+
+        S = totalSumOfS / sumOfFi;
+        return S;
+    };
+    console.log(FindS());
+
+    const standartDeviationOfS = Math.sqrt(FindS());
+    console.log(standartDeviationOfS);
+
+    const CV = ((standartDeviationOfS / FindMd()) * 100).toFixed(2);
+    console.log(`CV${CV}`);
+};
+
+CVWClass();
