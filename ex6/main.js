@@ -265,7 +265,6 @@ function perfectSquare(n){
 
 }
 
-
 //perfectSquare(627)
 
 function fiTable(){
@@ -498,4 +497,30 @@ function CVWClass (){
     console.log(`CV${CV}`);
 };
 
-CVWClass();
+//CVWClass();
+
+function FindstandartDeviation(){
+    const numbers = [1, 8, 3, 255, 46, 78, 9, 12, 3, 5, 125, 277, 289, 485, 589, 234, 67, 89].sort();
+
+    console.log(numbers)
+
+    let sumOfNumbers = 0;
+    for (i of numbers){
+        sumOfNumbers += i;
+    };
+    const avg = sumOfNumbers / numbers.length;
+
+    let numbersSquared = 0;
+    for (i of numbers){
+        numbersSquared += (i - avg)**2;
+    };
+
+    const numbersSquaredAvg = numbersSquared / numbers.length;
+
+    const populationStandartDeviation = Math.sqrt(numbersSquaredAvg);
+    console.log(populationStandartDeviation.toFixed(2));
+};
+
+//FindstandartDeviation(0);
+
+
