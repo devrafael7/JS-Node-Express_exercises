@@ -1,0 +1,15 @@
+{
+  "id": "ab4a52d2-72b4-42ee-94e3-a4356215299c",
+  "cart": [
+    {
+      "product": "Earring",
+      "price": 29.99
+    },
+    {
+      "product": "Collar",
+      "price": 72
+    }
+  ],
+  "points": 10,
+  "currentBalance": 34.269999999999996
+}
