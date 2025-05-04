@@ -87,3 +87,80 @@ const notebook: Product = {
 
 //console.log(notebook.applyDiscount(50));
 
+function CalculateAverage(numbers : number[]) : number {
+    const total = numbers.reduce((sum, current) => sum + current, 0);
+    return total / numbers.length;
+};
+
+//console.log(CalculateAverage([2, 4, 6]));
+
+function ValidateEmail(email: string) : boolean {
+    return /\S+@\S+\.\S+/.test(email);
+};
+
+//console.log(ValidateEmail('rafael@gmail.com'));
+
+class Person {
+    constructor(public name: string, public age : number) {}
+    
+    Greeting() : string {
+        return `Hi, my name is ${this.name} and i'm ${this.age}`;
+    };
+}
+
+const rafa = new Person("Rafael", 19);
+//console.log(rafa.Greeting());
+
+function Divide(a: number, b: number) : number {
+    if (b === 0) throw new Error("You're dividing by zero!");
+    return a / b;
+}
+
+/*
+try {
+    console.log(Divide(10, 0));
+} catch (erro) {
+    console.log("Error: ", (erro as Error).message);
+}
+*/
+
+function GetFirstElement<T>(list: T[]) : T | undefined {
+    return list[0];
+}
+
+console.log(GetFirstElement([1, 2, 3]));
+console.log(GetFirstElement(["a", "b"]));
+
+type Action = "save" | "delete" | "edit";
+
+function RunAction(action: Action) {
+    switch (action) {
+        case "save":
+            console.log("Saving it...");
+            break;
+        case "delete":
+            console.log("Deleting it...");
+            break;
+        case "edit":
+            console.log("Editing it...");
+            break;
+    }
+}
+
+//RunAction("delete");
+
+type UserDB = {
+    email: string;
+    password: string;
+};
+
+const DB: UserDB[] = [
+    { email: "rafa@gmail.com", password: "123" },
+    { email: "maria@gmail.com", password: "321" }
+];
+
+function SignIn(email: string, password: string) : boolean {
+    return DB.some(user => user.email === email && user.password === password);
+}
+
+//console.log(SignIn("rafa@gmail.com", "123"));
