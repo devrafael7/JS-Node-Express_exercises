@@ -57,7 +57,7 @@ function GenerateUserID(){
     return crypto.randomUUID();
 }
 
-const userID = GenerateUserID();
+const userID = GenerateUserID() ;
 
 const userDataFile = `${userID}.json`;
 
