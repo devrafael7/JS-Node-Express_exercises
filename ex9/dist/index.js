@@ -108,8 +108,6 @@ try {
 function GetFirstElement(list) {
     return list[0];
 }
-console.log(GetFirstElement([1, 2, 3]));
-console.log(GetFirstElement(["a", "b"]));
 function RunAction(action) {
     switch (action) {
         case "save":
@@ -130,4 +128,14 @@ const DB = [
 function SignIn(email, password) {
     return DB.some(user => user.email === email && user.password === password);
 }
-console.log(SignIn("rafa@gmail.com", "123"));
+//console.log(SignIn("rafa@gmail.com", "123"));
+function FindFactorial(n1) {
+    let factorialN = n1;
+    for (let i = (n1 - 1); i >= 1; i--) {
+        factorialN *= i;
+        console.log(factorialN);
+    }
+    ;
+}
+;
+FindFactorial(6);

@@ -128,8 +128,8 @@ function GetFirstElement<T>(list: T[]) : T | undefined {
     return list[0];
 }
 
-console.log(GetFirstElement([1, 2, 3]));
-console.log(GetFirstElement(["a", "b"]));
+//console.log(GetFirstElement([1, 2, 3]));
+//console.log(GetFirstElement(["a", "b"]));
 
 type Action = "save" | "delete" | "edit";
 
@@ -164,3 +164,15 @@ function SignIn(email: string, password: string) : boolean {
 }
 
 //console.log(SignIn("rafa@gmail.com", "123"));
+
+
+function FindFactorial(n1: number) {
+    let factorialN: number = n1;
+
+    for (let i: number = (n1 - 1); i >= 1; i --){
+        factorialN *= i;
+        console.log(factorialN);
+    };
+};
+
+//FindFactorial(6);
