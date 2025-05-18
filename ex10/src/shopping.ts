@@ -25,6 +25,25 @@ const userCartTotal: Cart[] = userCart.map(i => ({
 
 console.log(userCartTotal);
 
+//filter
+
+function RemoveItemFromCart(name: string): Cart[]{
+    return userCartTotal.map(item => {
+        if (item.product === name) {
+            if (item.quantity > 1){
+                return {
+                    ...item,
+                    quantity: item.quantity - 1,
+                    price: (item.price / item.quantity) * (item.quantity - 1),
+                };
+            } return null
+        }
+        return item;
+    }).filter(item => item !== null) as Cart[];
+}
+
+console.log(RemoveItemFromCart('cap'))
+
 
 
 
