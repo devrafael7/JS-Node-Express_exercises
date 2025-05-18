@@ -6,7 +6,7 @@ type Cart = {
 }
 
 const userCart: Cart[] = [
-    {product: 'shoes', price: 29.99, quantity: 1, size: '38'},
+    {product: 'shoes', price: 109.99, quantity: 1, size: '38'},
     {product: 'cap', price: 9.99, quantity: 2},
     {product: 'earring', price: 5.99, quantity: 2}
 ];
@@ -25,7 +25,7 @@ const userCartTotal: Cart[] = userCart.map(i => ({
 
 console.log(userCartTotal);
 
-//filter
+//filter()
 
 function RemoveItemFromCart(name: string): Cart[]{
     return userCartTotal.map(item => {
@@ -42,7 +42,37 @@ function RemoveItemFromCart(name: string): Cart[]{
     }).filter(item => item !== null) as Cart[];
 }
 
-console.log(RemoveItemFromCart('cap'))
+//forEach()
+userCartTotal.forEach(i => console.log(i.price * i.quantity));
+
+//find()
+function FindItem(nameSearch: string){
+    console.log(userCartTotal.find(i => i.product == nameSearch));
+};
+
+FindItem('earring');
+
+//findIndex()
+function FindIndexOfItem(nameSearch: string){
+    console.log(userCartTotal.findIndex(i => i.product === nameSearch));
+};
+
+FindIndexOfItem('earring');
+
+
+//some()
+function IsItMoreThan50() {
+    userCartTotal.forEach(i => console.log(`${i.product}: ${i.price >= 50}`));
+
+    const hasItemMoreThan50 = userCartTotal.some(i => i.price >= 50);
+    console.log(`Is There some value more or equals 50? ${hasItemMoreThan50}`);
+}
+
+IsItMoreThan50();
+
+
+
+
 
 
 
