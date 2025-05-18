@@ -138,4 +138,4 @@ function FindFactorial(n1) {
     ;
 }
 ;
-FindFactorial(6);
+//FindFactorial(6);
