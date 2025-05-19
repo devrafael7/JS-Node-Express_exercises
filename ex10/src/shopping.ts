@@ -70,7 +70,21 @@ function IsItMoreThan50() {
 
 IsItMoreThan50();
 
+//reduce
 
+function PriceSum(): number {
+    return  userCartTotal.reduce((acc, i) => acc + i.price, 0);
+}
+
+console.log(PriceSum());
+
+//includes()
+
+function IsReal(productName: string): boolean{
+    return userCartTotal.some(i => i.product.includes(productName));
+}
+
+console.log(IsReal('x'));
 
 
 
