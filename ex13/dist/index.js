@@ -13,4 +13,3 @@ function ProductType(ProductName, ProductPrice) {
     AddProduct(Product);
     console.log(ShoppingCart);
 }
-ProductType('Mouse', 50);
