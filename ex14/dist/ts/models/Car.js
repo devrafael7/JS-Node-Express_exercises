@@ -12,7 +12,7 @@ class Car {
     }
     ;
     brake() {
-        this.speed = Math.max(10, this.speed - 10);
+        this.speed = Math.max(0, this.speed - 10);
         console.log(`Braking. Speed: ${this.speed} km/h`);
     }
     ;
