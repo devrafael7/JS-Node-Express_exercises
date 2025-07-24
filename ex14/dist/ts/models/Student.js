@@ -10,10 +10,10 @@ class Student {
     get average() {
         return Number(((this.grade1 + this.grade2) / 2).toFixed(2));
     }
-    approved() {
+    get approved() {
         return this.average >= 7;
     }
 }
 ;
 const student1 = new Student("Rafael", 85.4, 90.2);
-console.log(`Average: ${student1.average}, Status: ${student1.approved() ? "Approved" : "Not Approved"}`);
+console.log(`Average: ${student1.average}, Status: ${student1.approved ? "Approved" : "Not Approved"}`);
