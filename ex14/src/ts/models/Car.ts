@@ -1,7 +1,7 @@
 class Car { //public class Car
     brand: string; //public String brand
     model: string; //public String model
-    speed: number = 0; //public String speed
+    speed: number = 0; //public float speed
 
     //Instance
     constructor(brand: string, model:string){ //public Car(String brand, String model, String speed)

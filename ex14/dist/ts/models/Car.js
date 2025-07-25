@@ -2,7 +2,7 @@
 class Car {
     //Instance
     constructor(brand, model) {
-        this.speed = 0; //public String speed
+        this.speed = 0; //public float speed
         this.brand = brand;
         this.model = model;
     }
