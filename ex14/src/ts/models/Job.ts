@@ -1,6 +1,6 @@
 class Employee { 
-    name: string;
-    baseSalary: number;
+    name: string; //protected String name
+    baseSalary: number; //protected double baseSalary
 
     constructor(name: string, baseSalary: number){
         this.name = name;
